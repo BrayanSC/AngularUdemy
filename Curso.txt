@@ -1,0 +1,38 @@
+MODULOS:
+
+1- Component:
+Se importa de @angular/core, este da la funcionalidad de componente 
+
+
+
+
+
+
+2- Router:
+
+Se importa de @angular/router y es para las rutas de navegacion.
+
+-RouterLink: suplanta el href y se define (ejemplo) [routerLink]=["home","pagina","ect"] se veria como
+localhost:4200/home/paginas/ect
+No recarga el componente al clikear varias veces.
+
+-RouterLinkActive: se define (ejemplo) routerLinkActive="new class" puede colocar una clase a
+una ruta activa
+
+
+
+TIPOS DE PIPES:
+currency
+date
+uppercase
+json
+limito
+lowercase
+async
+decimal
+percent
+
+
+ETIQUETAS:
+
+@Input de @angular/core se puede agregar esta etiqueta a un metodo o propiedad
