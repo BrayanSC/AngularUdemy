@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { SpotifyService } from '../../services/spotify.service';
+// import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
 
@@ -19,10 +19,27 @@ export class HomeComponent implements OnInit {
   //       this.paises= respuesta;
   //   });
   // }
-  constructor(){
 
+  nuevasCanciones: any[] = [];
+  loading: boolean;
+  error: boolean;
+  errorMessage: string;
+
+  constructor( private spotify: SpotifyService){
+    this.loading = true;
+    this.error = false;
+    this.spotify.getNewRelease()
+    .subscribe( (data: any) => {
+      this.nuevasCanciones = data;
+      this.loading = false;
+    }, (errorServicio) =>{
+      this.error = true;
+      console.log(errorServicio);
+      this.errorMessage = errorServicio.error.error.message;
+      this.loading = false;
+    });
   }
-  
+
   ngOnInit() {
   }
 

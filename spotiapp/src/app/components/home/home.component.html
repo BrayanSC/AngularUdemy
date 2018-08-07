@@ -1,0 +1,8 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+    <h3>Error</h3>
+    <p>{{ errorMessage }}</p>
+</div>
+<!-- Envio los artistas con un @Input desde este modulo -->
+<app-tarjetas [items]="nuevasCanciones"></app-tarjetas>
