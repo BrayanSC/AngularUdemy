@@ -1,3 +1,7 @@
+Generar componentes:
+
+ng g c components/componente -is --spec (sin arivo de css y de pruebas unitarias)
+
 MODULOS:
 
 1- Component:
@@ -40,3 +44,4 @@ Es un evento del padre hacia el hijo
 
 @Output de @angular/core se puede agregar esta etiqueta a un metodo o propiedad. Para enviar data.
 Es un evento del padre hacia el hijo
+

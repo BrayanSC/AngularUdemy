@@ -1,0 +1,26 @@
+<!-- Se debe encapsular todo el switch en un div -->
+<div [ngSwitch]="alerta">
+
+    <h3>Se esta evaluando en el Switch: {{ alerta }}</h3>
+   <!-- Esta comparando un string por lo que se pone "'contenido'" -->
+    <div *ngSwitchCase="'success'" class="alert alert-success" role="alert">
+        A simple success alert—check it out!
+    </div>
+
+    <div *ngSwitchCase="'danger'" class="alert alert-danger" role="alert">
+        A simple danger alert—check it out!
+    </div>
+
+    <div *ngSwitchCase="'warning'" class="alert alert-warning" role="alert">
+        A simple warning alert—check it out!
+    </div>
+
+    <div *ngSwitchCase="'info'" class="alert alert-info" role="alert">
+        A simple info alert—check it out!
+    </div>
+
+    <div *ngSwitchDefault class="alert alert-dark" role="alert">
+        A simple dark alert—check it out! (Default)
+    </div>
+
+</div>
