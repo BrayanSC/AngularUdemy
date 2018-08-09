@@ -1,0 +1,23 @@
+Para los INPUT:
+
+Debe estar dentro de un form tag <form></form>
+Para manejar todas las validaciones con angular y no ver msjs que por defecto el navegador
+envia al tener un required  de debe colocar al from tag novalidate=""
+<form novalidate=""></form>
+
+Se les debe agregar la etiqueta ngModel y angular se encargara de agregar etiquetas o listener
+para el input, algunas de ellas son:
+
+1- ng-untouched: El usuario no ha tocado ese elemento
+1. ng-touched: Ya el usuario toco y quito el cursos del elemento.
+
+2- ng-pristine: Esta con el valor por defecto.
+2. ng-dirty: Que ya se ha escrito sobre el elemento. Contrario de (ng-pristine)
+
+3- ng-valid: Todas las validaciones  para elemento fueron aceptadas.
+3. ng-invalid: No paso las validaciones.
+
+Al colocar [ngModel]="AnyValueComponent.ts" el input va a tomar este valor como por defecto del mismo.
+
+Al colocar [(ngModel)]="AnyValueComponent.ts" tambien tomara el valor por defecto pero enviara 
+el valor de vuelta al valor referenciado (2waybindign)
