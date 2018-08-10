@@ -8,11 +8,18 @@ import { NgForm } from '@angular/forms';
 })
 export class TemplateComponent {
 
-  usuario: Object ={
-    nombre:"Brayan",
-    apellido: "Saborio",
-    correo: "scbrayan@gmail.com"
+  // usuario: Object ={
+  //   nombre:"Brayan",
+  //   apellido: "Saborio",
+  //   correo: "scbrayan@gmail.com"
+  // };
+
+  usuario: Object = {
+    nombre: null,
+    apellido: null,
+    correo: null
   };
+
   constructor() { }
 
 
