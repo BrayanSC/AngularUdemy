@@ -1,57 +1,89 @@
-<h4>Formularios <small>data</small></h4>
+<h4>Formularios
+  <small>data</small>
+</h4>
 <hr>
 <!-- Se coloca [formGroup]="forma" para ligarlo con el forma del component -->
 <form [formGroup]="forma" (ngSubmit)="guardarCambios()" novalidate="novalidate">
 
-  <div>
+  <!-- Se debe colocar un div por objeto validado -->
+  <div formGroupName="nombreCompleto">
+    <!-- Esta es otra forma de ver optener el control de un input forma.get('elemento') -->
 
-    <div class="form-group row">
+    <div class="form-group row" [ngClass]="{'alert-danger text-danger': !forma.get('nombreCompleto.nombre').valid && forma.get('nombreCompleto.nombre').touched }">
       <label class="col-2 col-form-label">Nombre</label>
-      <div class="col-8">
+      <div class="col-8 ">
 
-        <input class="form-control"
-               type="text"
-               placeholder="Nombre"
-               formControlName="nombre">
-               <!-- Con esto se liga el valor con el component -->
-               <!--  -->
-               <div *ngIf="forma.controls['nombre'].errors?.required" 
-               class="form-control-feedback">
-                  El nombre es Necesario
-               </div>
-               <div *ngIf="forma.controls['nombre'].errors?.minlength" 
-               class="form-control-feedback">
-                  Requiere al menos {{ forma.controls['nombre'].errors.minlength.requiredLength }} caracteres
-               </div>
+        <input class="form-control " type="text" placeholder="Nombre" formControlName="nombre">
+        <!-- Con esto se liga el valor con el component formControlName="nombre" -->
+        <!--  -->
+
+        <div *ngIf="forma.get('nombreCompleto.nombre').errors?.required" class="form-control-feedback">
+          El nombre es Necesario
+        </div>
+        <div *ngIf="forma.get('nombreCompleto.nombre').errors?.minlength" class="form-control-feedback">
+          Requiere al menos {{ forma.get('nombreCompleto.nombre').errors.minlength.requiredLength }} caracteres
+        </div>
       </div>
     </div>
-
+    <!-- [ngClass]="{'alert-danger text-danger': !forma.get('apellido').valid && forma.get('apellido').touched }" -->
     <div class="form-group row">
       <label class="col-2 col-form-label">Apellido</label>
       <div class="col-8">
 
-        <input class="form-control"
-               type="text"
-               placeholder="Apellido"
-               formControlName="apellido">
+        <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido">
       </div>
     </div>
 
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row" [ngClass]="{'alert-danger text-danger': !forma.get('correo').valid && forma.get('correo').touched }">
     <label class="col-2 col-form-label">Correo</label>
     <div class="col-md-8">
 
-      <input class="form-control"
-             type="email"
-             placeholder="Correo electrónico"
-             formControlName="correo">
+      <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo">
     </div>
   </div>
 
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pasatiempos</label>
+    <!-- sabra que dentro de este elemento se construye con un unarray ( formArrayName="pasaTiempos") -->
+    <div formArrayName="pasaTiempos" class="col-md-8">
+      <!-- Recuerda que [formControlName]="i" le dice la posicion del input a mostrar -->
+      <input *ngFor="let pasatiempo of forma.controls['pasaTiempos'].controls; let i = index;" [formControlName]="i" type="text"
+        class="form-control">
+    </div>
+
+    <button (click)="agregarPasatiempo()" type="button" class="btn btn-primary">
+      Nuevo
+    </button>
+
+  </div>
 
 
+  <div class="form-group row">
+      <label class="col-2 col-form-label">Usuario</label>
+      <div class="col-md-8">
+  
+        <input class="form-control" type="text" placeholder="Usuario"  formControlName="usuario">
+      </div>
+    </div>
+
+    
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Contraseña</label>
+    <div class="col-md-8">
+
+      <input class="form-control" type="password" placeholder="Contraseña"  formControlName="password1">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Repetir Contraseña</label>
+    <div class="col-md-8">
+
+      <input class="form-control" type="password" placeholder="Repetir Contraseña" formControlName="password2">
+    </div>
+  </div>
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
@@ -62,5 +94,7 @@
   </div>
 
   {{forma.valid}}
+  <br>
+  {{forma.status}}
 
 </form>
